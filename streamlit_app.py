@@ -19,13 +19,13 @@ from langchain.llms import OpenAI
 #         generate_response(text)
 
 
-# 用户输入问题存储
+# 用户输入问题
 def user_message(input_text):
     with st.chat_message("user"):
         st.write(input_text)
 
 
-# 以往回答结果存储
+# 以往回答结果
 def old_messages(output_text):
     with st.chat_message("assistant"):
         st.write(output_text)
@@ -56,8 +56,8 @@ if __name__ == '__main__':
         if not st.session_state:
             user_message(prompt)
             output1 = chatgpt_message("chatgpt返回的第1次回答结果")
-            st.session_state.user = [prompt]
-            st.session_state.ans = [output1]
+            st.session_state.user = [prompt]    # 用户输入问题列表
+            st.session_state.ans = [output1]    # 以往回答结果列表
         else:
             # 列表展示以往回答
             for i in range(len(st.session_state.user)):
