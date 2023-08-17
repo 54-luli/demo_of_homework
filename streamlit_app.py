@@ -56,8 +56,8 @@ if __name__ == '__main__':
         if not st.session_state:
             user_message(prompt)
             output1 = chatgpt_message("chatgpt返回的第1次回答结果")
-            st.session_state.user = [prompt]    # 用户输入问题列表
-            st.session_state.ans = [output1]    # 以往回答结果列表
+            st.session_state.user = [prompt]    # 用户输入问题存储列表
+            st.session_state.ans = [output1]    # 以往回答结果存储列表
         else:
             # 列表展示以往回答
             for i in range(len(st.session_state.user)):
