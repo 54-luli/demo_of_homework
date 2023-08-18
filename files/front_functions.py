@@ -8,15 +8,15 @@ def user_message(input_text):
 
 
 # 以往回答结果
-def old_messages(output_text):
+def old_messages(past_answer):
     with st.chat_message("assistant"):
-        st.write(output_text)
+        st.write(past_answer)
 
 
 # 获取chatgpt接口返回的结果
-def chatgpt_message(text):
+def chatgpt_message(answer):
     # 测试用
-    output_text = "chatgpt对问题：【" + text + "】的回答结果"
+    output_text = "chatgpt对问题：【" + answer + "】的回答结果"
     with st.chat_message("assistant"):
         st.write(output_text)
         return output_text
