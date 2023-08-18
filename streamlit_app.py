@@ -4,8 +4,8 @@ from files.front_functions import *
 
 # streamlit run streamlit_app.py
 if __name__ == '__main__':
-    st.set_page_config(page_title="🦜🔗 Quickstart App")
-    st.title('🦜🔗 Quickstart App')
+    st.set_page_config(page_title="🦜🔗 金山云智能小助手")
+    st.title('🦜🔗 金山云智能小助手')
 
     # 侧边栏
     with st.sidebar:
