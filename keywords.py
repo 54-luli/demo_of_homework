@@ -38,9 +38,9 @@
 ###################################
 
 
-
-#方法二： 使用chatgpt来实现提取关键字
+# 方法二： 使用chatgpt来实现提取关键字
 import openai
+
 
 def extract_keywords(input_text):
     # 初始化OpenAI的API客户端
@@ -62,8 +62,8 @@ def extract_keywords(input_text):
     return keywords
 
 
-# 测试：调用函数并获取关键词
-input_text = "请你说说关系型数据，非关系型数据库的区别，以及镜像的基本原理"
-keywords = extract_keywords(input_text)
-print("提取的核心关键词：", keywords)
-
+if __name__ == '__main__':
+    # 测试：调用函数并获取关键词
+    input_text = "请你说说关系型数据，非关系型数据库的区别，以及镜像的基本原理"
+    keywords = extract_keywords(input_text)
+    print("提取的核心关键词：", keywords)
