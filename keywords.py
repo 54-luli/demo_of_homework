@@ -65,5 +65,6 @@ def extract_keywords(input_text, keys):
 if __name__ == '__main__':
     # 测试：调用函数并获取关键词
     input_text = "请你说说关系型数据，非关系型数据库的区别，以及镜像的基本原理"
-    keywords = extract_keywords(input_text)
+    keys = 0
+    keywords = extract_keywords(input_text, keys)
     print("提取的核心关键词：", keywords)
