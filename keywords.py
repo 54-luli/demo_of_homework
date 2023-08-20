@@ -42,9 +42,9 @@
 import openai
 
 
-def extract_keywords(input_text):
+def extract_keywords(input_text, keys):
     # 初始化OpenAI的API客户端
-    openai.api_key = "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"
+    openai.api_key = keys
 
     # 根据用户输入构建一个适当的提示
     prompt = f"提取以下文本的核心关键词：\n{input_text}\n关键词："

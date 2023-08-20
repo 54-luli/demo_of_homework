@@ -17,6 +17,8 @@ if __name__ == '__main__':
 
     # 侧边栏
     with st.sidebar:
+        openai_api_key = st.sidebar.text_input('请在下方输入您的OpenAI API key!')
+
         # 创建两列布局
         col1, col2 = st.columns([1, 1])
         # 在第一列中显示图片
@@ -27,9 +29,11 @@ if __name__ == '__main__':
         for line in introductions_file:
             st.markdown(line)
 
+    if not openai_api_key.startswith('sk-'):
+        st.warning('请输入您的 OpenAI API key!', icon='⚠')
     # 用户输入问题的关键词提取函数测试
     prompt = st.chat_input("请输入您想查询的问题")
-    if prompt:
+    if prompt and openai_api_key.startswith('sk-'):
         user_message(prompt)
-        output = extract_keywords(prompt)
+        output = extract_keywords(prompt, openai_api_key)
         result = chatgpt_message(output)
