@@ -1,13 +1,19 @@
 import streamlit as st
+import os
+import sys
+sys.path.append(os.getcwd())
+
+
 from files.front_text import *
 from files.front_functions import *
 from keywords import *
-
 
 # streamlit run streamlit_app.py
 if __name__ == '__main__':
     st.set_page_config(page_title="🦜🔗 金山云智能小助手")
     st.title('🦜🔗 金山云智能小助手')
+
+    # st.write(sys.path)
 
     # 侧边栏
     with st.sidebar:
