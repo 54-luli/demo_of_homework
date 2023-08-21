@@ -1,8 +1,8 @@
 import streamlit as st
 import os
 import sys
-sys.path.append(os.getcwd())
 
+sys.path.append(os.getcwd())
 
 from files.front_text import *
 from files.front_functions import *
