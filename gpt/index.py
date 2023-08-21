@@ -1,15 +1,15 @@
 import json
 import openai
 
-# openai.verify_ssl_certs = False
 openai.proxy = {'http': 'http://localhost:7890', 'https': 'http://localhost:7890'}
 
-# openai.organization = "org-GizSlscEOzMKtpi9DTSeWfTI"
-openai.api_key = "sk-xx"
+openai.api_key = "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"
 
-# openai.api_version = "2023-05-15"
-
-def answer_user_by_chatgpt(question: str) -> str:
+def generate_response(question: str) -> str:
+    """
+    
+    
+    """
     resp = openai.ChatCompletion.create(
         model="gpt-3.5-turbo-0613",
         messages=[
