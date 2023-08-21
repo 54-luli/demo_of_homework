@@ -57,7 +57,8 @@ def extract_keywords(input_text, keys):
     )
 
     # 从GPT-3.5的响应中提取生成的关键词
-    keywords = response.choices[0].text.strip()
+#    keywords = response.choices[0].text.strip()
+    keywords = "#############"+response.choices[0].text
 
     return keywords
 
