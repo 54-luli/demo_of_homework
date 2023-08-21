@@ -1,4 +1,3 @@
-import streamlit as st
 import os
 import sys
 
@@ -6,7 +5,7 @@ sys.path.append(os.getcwd())
 
 from files.front_text import *
 from files.front_functions import *
-from keywords import *
+from files.keywords import *
 
 # streamlit run streamlit_app.py
 if __name__ == '__main__':
