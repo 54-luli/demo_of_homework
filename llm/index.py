@@ -1,21 +1,13 @@
-import json
-import openai
-import warnings
-from langchain.document_loaders import TextLoader, PDFMinerLoader, UnstructuredHTMLLoader, DirectoryLoader
-from langchain.chains.qa_with_sources import load_qa_with_sources_chain
-from langchain.text_splitter import CharacterTextSplitter
-from langchain.docstore.document import Document
-from langchain.llms import OpenAI
-from langchain.chat_models.openai import ChatOpenAI
-from langchain.prompts import PromptTemplate
-from langchain.chains import LLMRequestsChain, LLMChain
-from langchain.embeddings.openai import OpenAIEmbeddings
-
-from langchain.vectorstores import Chroma, Pinecone
-from langchain.chains import RetrievalQA
 import os
+import warnings
 
 import pinecone
+from langchain.chains import RetrievalQA
+from langchain.chat_models.openai import ChatOpenAI
+from langchain.document_loaders import DirectoryLoader
+from langchain.embeddings.openai import OpenAIEmbeddings
+from langchain.text_splitter import CharacterTextSplitter
+from langchain.vectorstores import Pinecone
 
 warnings.filterwarnings("ignore")
 
@@ -55,7 +47,15 @@ def init():
                                        return_source_documents=False)
 
 
-def generate_response(question: str, *args):
+def generate_response(question: str | list[str], *args):
+    """
+    直接传用户输入的问题就行，llm自动会进行解答
+    :param question:
+    :param args:
+    :return: {"query": "", 'result': "" }
+    """
+    if question is list:
+        question = str.join(question)
     global qa
     if not qa:
         qa = init()
