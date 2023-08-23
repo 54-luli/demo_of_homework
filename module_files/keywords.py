@@ -39,28 +39,40 @@
 
 
 # 方法二： 使用chatgpt来实现提取关键字
-import openai
+# import openai
 
 
-def extract_keywords(input_text, keys):
-    # 初始化OpenAI的API客户端
-    openai.api_key = keys
+# def extract_keywords(input_text, keys):
+#     # 初始化OpenAI的API客户端
+#     openai.api_key = keys
+#
+#     # 根据用户输入构建一个适当的提示
+#     prompt = f"提取以下文本的核心关键词：\n{input_text}\n关键词："
+#
+#     # 调用GPT-3.5来生成关键词
+#     response = openai.Completion.create(
+#         engine="text-davinci-003",
+#         prompt=prompt,
+#         max_tokens=5  # 根据需要设置关键词的最大数量
+#     )
+#
+#     # 从GPT-3.5的响应中提取生成的关键词
+# #    keywords = response.choices[0].text.strip()
+#     keywords = "#############"+response.choices[0].text
+#
+#     return keywords
 
+from langchain.llms import OpenAI
+
+
+def extract_keywords(user_input_text, api_keys):
     # 根据用户输入构建一个适当的提示
-    prompt = f"提取以下文本的核心关键词：\n{input_text}\n关键词："
-
+    prompt = f"提取以下文本的核心关键词：\n{user_input_text}\n关键词："
     # 调用GPT-3.5来生成关键词
-    response = openai.Completion.create(
-        engine="text-davinci-003",
-        prompt=prompt,
-        max_tokens=5  # 根据需要设置关键词的最大数量
-    )
-
+    response = OpenAI(temperature=0.7, openai_api_key=api_keys)
     # 从GPT-3.5的响应中提取生成的关键词
-#    keywords = response.choices[0].text.strip()
-    keywords = "#############"+response.choices[0].text
-
-    return keywords
+    key_words = response(prompt)
+    return key_words
 
 
 if __name__ == '__main__':
