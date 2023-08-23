@@ -67,7 +67,7 @@ from langchain.llms import OpenAI
 
 def extract_keywords(user_input_text, api_keys):
     # 根据用户输入构建一个适当的提示
-    prompt = f"提取以下文本的核心关键词：\n{user_input_text}\n关键词："
+    prompt = f"提取以下文本的关键词，只需要输出关键词即可：\n{user_input_text}\n关键词："
     # 调用GPT-3.5来生成关键词
     response = OpenAI(temperature=0.7, openai_api_key=api_keys)
     # 从GPT-3.5的响应中提取生成的关键词
