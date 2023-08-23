@@ -35,4 +35,6 @@ if __name__ == '__main__':
     elif prompt and openai_api_key.startswith('sk-'):
         user_message(prompt)
         output = extract_keywords(prompt, openai_api_key)
+        # t = output.split("、")
+        # st.markdown(type(t))
         result = chatgpt_message(output)
