@@ -1,15 +1,16 @@
 import requests
 
 
-def searchDoc(page, pageSize, keywords):
+def searchdoc(page, pagesize, keywords):
     url = "http://114.55.61.91:10087/searchDoc"
     data = {
         "page": page,
-        "pageSize": pageSize,
+        "pageSize": pagesize,
         "keywords": keywords
     }
     response = requests.post(url, json=data)
     return response.text
 
 
-print(searchDoc(1, 20, ["云服务器", "镜像"]))
+if __name__ == '__main__':
+    print(searchdoc(1, 20, ["云服务器", "镜像"]))
