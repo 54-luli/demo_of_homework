@@ -12,7 +12,9 @@ from module_files.searchdoc import *
 def get_result(extract_prompt, api_keys):
     output_keywords = extract_keywords(extract_prompt, api_keys)
     keywords_of_url = searchdoc(1, 3, output_keywords)
-    result = chatgpt_message(keywords_of_url)
+    # result = chatgpt_message(keywords_of_url)
+    temp = f"\n关键词：{output_keywords}\n相关文档链接：{keywords_of_url}"
+    result = chatgpt_message(temp)
     return result
 
 
