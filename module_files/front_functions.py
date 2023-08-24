@@ -16,7 +16,7 @@ def old_messages(past_answer):
 # 获取chatgpt接口返回的结果
 def chatgpt_message(answer):
     # 测试用
-    output_text = "chatgpt对以上问题的的回答结果：" + answer
+    output_text = "chatgpt对以上问题的的回答结果：\n" + answer
     with st.chat_message("assistant"):
         st.write(output_text)
         return output_text
