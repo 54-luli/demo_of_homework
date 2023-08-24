@@ -65,11 +65,11 @@
 from langchain.llms import OpenAI
 
 
-def extract_keywords(user_input_text, api_keys):
+def extract_keywords(user_input_text):
     # 根据用户输入构建一个适当的提示
     prompt = f"提取以下文本的关键词，只需要输出关键词即可：\n{user_input_text}\n关键词："
     # 调用GPT-3.5来生成关键词
-    response = OpenAI(temperature=0.7, openai_api_key=api_keys)
+    response = OpenAI(temperature=0.7)
     # 从GPT-3.5的响应中提取生成的关键词
     key_words = response(prompt)
     ans = key_words.split("、")
@@ -79,6 +79,5 @@ def extract_keywords(user_input_text, api_keys):
 if __name__ == '__main__':
     # 测试：调用函数并获取关键词
     input_text = "请你说说关系型数据，非关系型数据库的区别，以及镜像的基本原理"
-    keys = 0
-    keywords = extract_keywords(input_text, keys)
+    keywords = extract_keywords(input_text)
     print("提取的核心关键词：", keywords)

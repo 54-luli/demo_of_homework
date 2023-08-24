@@ -1,4 +1,6 @@
 import streamlit as st
+from module_files.keywords import *
+from module_files.searchdoc import *
 
 
 # 用户输入问题
@@ -25,3 +27,11 @@ def chatgpt_message(answer):
     # with st.chat_message("assistant"):
     #     st.write(output_text)
     #     return output_text
+
+
+def get_result(extract_prompt):
+    output_keywords = extract_keywords(extract_prompt)
+    keywords_of_url = searchdoc(1, 3, output_keywords)
+    temp = f"\n关键词：{output_keywords}\n相关文档链接：{keywords_of_url}"
+    result = chatgpt_message(temp)
+    return result

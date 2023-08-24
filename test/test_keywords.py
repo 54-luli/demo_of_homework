@@ -1,11 +1,11 @@
 import os
 import sys
-
+import openai
 sys.path.append(os.getcwd())
 
 from module_files.front_text import *
 from module_files.front_functions import *
-from module_files.keywords import *
+
 
 # streamlit run streamlit_app.py
 if __name__ == '__main__':
@@ -13,11 +13,11 @@ if __name__ == '__main__':
     st.title('🦜🔗 金山云智能小助手')
 
     # st.write(sys.path)
+    os.environ['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
+    openai.api_key = os.getenv("OPENAI_API_KEY")
 
     # 侧边栏
     with st.sidebar:
-        openai_api_key = st.sidebar.text_input('请在下方输入您的OpenAI API key!')
-
         # 创建两列布局
         col1, col2 = st.columns([1, 1])
         # 在第一列中显示图片
@@ -29,12 +29,24 @@ if __name__ == '__main__':
             st.markdown(line)
 
     prompt = st.chat_input("请输入您想查询的问题")
-    if not openai_api_key.startswith('sk-'):
-        st.warning('请输入您的 OpenAI API key!', icon='⚠')
     # 用户输入问题的关键词提取函数测试
-    elif prompt and openai_api_key.startswith('sk-'):
-        user_message(prompt)
-        output = extract_keywords(prompt, openai_api_key)
-        # t = output.split("、")
-        # st.markdown(type(t))
-        result = chatgpt_message(output)
+    if prompt:
+        # 首次回答
+        if not st.session_state:
+            user_message(prompt)
+            key_words1 = extract_keywords(prompt)
+            result1 = chatgpt_message(key_words1)
+            st.session_state.user = [prompt]  # 新建用户输入问题存储列表
+            st.session_state.ans = [result1]  # 新建以往回答结果存储列表
+        else:
+            # 列表展示以往回答
+            for i in range(len(st.session_state.user)):
+                user_message(st.session_state.user[i])
+                old_messages(st.session_state.ans[i])
+            # 展示最新一次回答
+            user_message(prompt)
+            key_words2 = extract_keywords(prompt)
+            result2 = chatgpt_message(key_words2)
+            # 保存最新一次回答
+            st.session_state.user.append(prompt)
+            st.session_state.ans.append(result2)
