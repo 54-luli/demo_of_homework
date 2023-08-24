@@ -72,8 +72,8 @@ def extract_keywords(user_input_text):
     response = OpenAI(temperature=0.7)
     # 从GPT-3.5的响应中提取生成的关键词
     key_words = response(prompt)
-    # ans = key_words.split("、")
-    return key_words
+    ans = key_words.split("、")
+    return ans
 
 
 if __name__ == '__main__':

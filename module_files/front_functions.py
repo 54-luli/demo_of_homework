@@ -18,10 +18,10 @@ def old_messages(past_answer):
 # 获取chatgpt接口返回的结果
 def chatgpt_message(answer):
     # 测试用
-    output_text = "chatgpt对以上问题的的回答结果：\n" + answer
     with st.chat_message("assistant"):
-        st.write(output_text)
-        return output_text
+        st.write("chatgpt对以上问题的的回答结果：\n")
+        st.write("关键词：", answer[0], "\n", "相关文档链接：", answer[1])
+        return answer
     # 实际调用
     # output_text = 第4步调用函数（）
     # with st.chat_message("assistant"):
@@ -32,7 +32,7 @@ def chatgpt_message(answer):
 # 关键词提取与文档链接整合
 def get_result(extract_prompt):
     output_keywords = extract_keywords(extract_prompt)
-    keywords_of_url = searchdoc(1, 3, output_keywords)
-    temp = f"\n关键词：{output_keywords}\n相关文档链接：{keywords_of_url}"
+    keywords_of_url = searchdoc(1, 2, output_keywords)
+    temp = [output_keywords, keywords_of_url]
     result = chatgpt_message(temp)
     return result
