@@ -5,6 +5,13 @@ introductions_file = ("""
                       # 如需查阅金山云的相关文档可以点击以下链接：
                       """,
                       """
+                      <style>
+                        a {
+                            text-decoration:none;
+                        }
+                      </style>
+                      """,
+                      """
                       # 计算资源\n
                       #### ● [云服务器(KEC)](https://docs.ksyun.com/products/24)\n
                       #### ● [GPU云服务器](https://docs.ksyun.com/products/1)\n

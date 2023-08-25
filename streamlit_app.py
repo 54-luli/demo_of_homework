@@ -17,7 +17,7 @@ if __name__ == '__main__':
         col2.markdown(f"<h1 style='font-size:40px;transform:translateY(20px);'>{jinshanyun}</h1>",
                       unsafe_allow_html=True)
         for line in introductions_file:
-            st.markdown(line)
+            st.markdown(line, unsafe_allow_html=True)
 
     prompt = st.chat_input("请输入您想查询的问题")
     if prompt:
