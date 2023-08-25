@@ -6,6 +6,8 @@ from module_files.front_functions import *
 if __name__ == '__main__':
     st.set_page_config(page_title="🦜🔗 金山云智能小助手")
     st.title('🦜🔗 金山云智能小助手')
+    st.divider()
+    st.subheader('请在下方对话框输入您的问题')
 
     # 侧边栏
     with st.sidebar:
@@ -16,8 +18,31 @@ if __name__ == '__main__':
         # 在第二列中显示标题
         col2.markdown(f"<h1 style='font-size:40px;transform:translateY(20px);'>{jinshanyun}</h1>",
                       unsafe_allow_html=True)
-        for line in introductions_file:
-            st.markdown(line, unsafe_allow_html=True)
+
+        # 欢迎语句
+        with st.container():
+            st.markdown(first_sentence)
+
+        with st.expander("📚 计算资源", False):
+            for line in computing_resource:
+                st.markdown(line, unsafe_allow_html=True)
+
+        with st.expander("📚 大数据", False):
+            for line in big_data:
+                st.markdown(line, unsafe_allow_html=True)
+
+        with st.expander("📚 数据库", False):
+            for line in database:
+                st.markdown(line, unsafe_allow_html=True)
+
+        with st.expander("📚 网络", False):
+            for line in network:
+                st.markdown(line, unsafe_allow_html=True)
+
+        # 结束句
+        with st.container():
+            for line in last_sentence:
+                st.markdown(line, unsafe_allow_html=True)
 
     prompt = st.chat_input("请输入您想查询的问题")
     if prompt:
@@ -41,3 +66,10 @@ if __name__ == '__main__':
 
         # st.write(st.session_state.user)
         # st.write(st.session_state.ans)
+
+    # 输入框输入数值之后消失
+    # placeholder = st.empty()
+    #
+    # # Replace the chart with several elements:
+    # with placeholder.container():
+    #     st.image("./img/kc-logo.png")
