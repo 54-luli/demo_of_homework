@@ -48,15 +48,29 @@ def init():
                                        return_source_documents=False)
 
 
-def generate_response(question: str | list[str], *args):
+# def generate_response(question: str | list[str], *args):
+#     """
+#     直接传用户输入的问题就行，llm自动会进行解答
+#     :param question:
+#     :param args:
+#     :return: {"query": "", 'result': "" }
+#     """
+#     if question is list:
+#         question = str.join(question)
+#     global qa
+#     if not qa:
+#         qa = init()
+#
+#     return qa({"query": question})
+def generate_response(quest, *args):
     """
     直接传用户输入的问题就行，llm自动会进行解答
-    :param question:
+    :param quest:
     :param args:
     :return: {"query": "", 'result': "" }
     """
-    if question is list:
-        question = str.join(question)
+    t = ""
+    question = t.join(quest)
     global qa
     if not qa:
         qa = init()
