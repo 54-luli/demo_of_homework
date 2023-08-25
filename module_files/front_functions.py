@@ -1,6 +1,7 @@
 import streamlit as st
 from module_files.keywords import *
 from module_files.searchdoc import *
+from module_files.get_answer import *
 
 
 # 用户输入问题
@@ -39,3 +40,20 @@ def get_result(extract_prompt):
     temp = [output_keywords, keywords_of_url]
     result = chatgpt_message(temp, 2)
     return result
+
+
+def generate_response(quest, *args):
+    """
+    直接传用户输入的问题就行，llm自动会进行解答
+    :param quest:
+    :param args:
+    :return: {"query": "", 'result': "" }
+    """
+    t = ""
+    question = t.join(quest)
+    # global qa
+    # if not qa:
+    #     qa = init()
+    result = init()
+
+    return result({"query": question})

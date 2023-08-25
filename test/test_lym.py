@@ -4,9 +4,7 @@ import openai
 
 sys.path.append(os.getcwd())
 
-from module_files.front_text import *
-from test_of_modules import *
-from llm.index import *
+from module_files.front_functions import *
 
 # streamlit run streamlit_app.py
 if __name__ == '__main__':
