@@ -1,5 +1,5 @@
-from module_files.front_text import *
 from module_files.front_functions import *
+from module_files.front_text import *
 
 # streamlit run streamlit_app.py
 if __name__ == '__main__':

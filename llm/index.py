@@ -12,6 +12,7 @@ from langchain.vectorstores import Pinecone
 warnings.filterwarnings("ignore")
 
 # os.environ["OPENAI_API_KEY"] = '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'
+# os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
 
 pinecone.init(
     api_key="bd95407b-37c9-4247-8026-4ea00e9eb271",
