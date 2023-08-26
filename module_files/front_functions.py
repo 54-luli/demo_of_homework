@@ -18,12 +18,14 @@ def old_messages(past_answer):
 # 获取chatgpt接口返回的结果
 def chatgpt_message(answer, flag):
     # 测试用
+    st.write("chatgpt对以上问题的的回答结果：\n")
     with st.chat_message("assistant"):
-        st.write("chatgpt对以上问题的的回答结果：\n")
         if flag == 1:
             st.write("关键词：", answer)
         elif flag == 2:
             st.write("关键词：", answer[0], "\n", "相关文档链接：", answer[1])
+        elif flag == 3:
+            st.write(answer)
         return answer
     # 实际调用
     # output_text = 第4步调用函数（）
