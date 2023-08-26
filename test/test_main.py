@@ -11,6 +11,8 @@ from test_of_modules import *
 if __name__ == '__main__':
     st.set_page_config(page_title="🦜🔗 金山云智能小助手")
     st.title('🦜🔗 金山云智能小助手')
+    st.divider()
+    st.subheader('请在下方对话框输入您的问题')
 
     # st.write(sys.path)
     os.environ['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
