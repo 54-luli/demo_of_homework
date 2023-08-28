@@ -60,3 +60,5 @@ if __name__ == '__main__':
         test_modules('关键词提取模块')
     elif option == '关键词相关文档链接获取模块':
         test_modules('关键词相关文档链接获取模块')
+    elif option == '生成结果模块':
+        test_modules('生成结果模块')
