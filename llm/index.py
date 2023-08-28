@@ -1,3 +1,5 @@
+import json
+
 import requests
 
 URL = "http://qa.inner.lymboy.com?q="
@@ -19,4 +21,5 @@ def generate_response(question: str | list[str], *args):
     # 发送请求
     res = requests.get(URL + question)
 
-    return res.content.decode('unicode-escape')
+    return json.loads(res.content.decode('unicode-escape'))
+
