@@ -76,7 +76,7 @@ if __name__ == '__main__':
         # 首次回答
         if not st.session_state:
             user_message(prompt)
-            output1 = chatgpt_message(prompt)
+            output1 = chatgpt_message(prompt, 3)
             st.session_state.user = [prompt]  # 新建用户输入问题存储列表
             st.session_state.ans = [output1]  # 新建以往回答结果存储列表
         else:
@@ -86,17 +86,10 @@ if __name__ == '__main__':
                 old_messages(st.session_state.ans[i])
             # 展示最新一次回答
             user_message(prompt)
-            output2 = chatgpt_message(prompt)
+            output2 = chatgpt_message(prompt, 3)
             # 保存最新一次回答
             st.session_state.user.append(prompt)
             st.session_state.ans.append(output2)
-
-        # st.write(st.session_state.user)
-        # st.write(st.session_state.ans)
-
-    # 输入框输入数值之后消失
-    # placeholder = st.empty()
-    #
-    # # Replace the chart with several elements:
-    # with placeholder.container():
-    #     st.image("./img/kc-logo.png")
+    else:
+        user_message("问题样例...")
+        chatgpt_message("回答的答案样例...", 3)
