@@ -63,6 +63,3 @@ if __name__ == '__main__':
             # 保存最新一次回答
             st.session_state.user.append(prompt)
             st.session_state.ans.append(output2)
-
-        # st.write(st.session_state.user)
-        # st.write(st.session_state.ans)
