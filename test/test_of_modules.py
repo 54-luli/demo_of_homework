@@ -17,7 +17,7 @@ def test_modules(module):
             if not st.session_state:
                 user_message(prompt)
                 key_words1 = extract_keywords(prompt)
-                result1 = chatgpt_message(key_words1, 1)
+                result1 = chatgpt_message(key_words1)
                 st.session_state.user = [prompt]  # 新建用户输入问题存储列表
                 st.session_state.ans = [result1]  # 新建以往回答结果存储列表
             else:
@@ -28,7 +28,7 @@ def test_modules(module):
                 # 展示最新一次回答
                 user_message(prompt)
                 key_words2 = extract_keywords(prompt)
-                result2 = chatgpt_message(key_words2, 1)
+                result2 = chatgpt_message(key_words2)
                 # 保存最新一次回答
                 st.session_state.user.append(prompt)
                 st.session_state.ans.append(result2)
@@ -59,7 +59,7 @@ def test_modules(module):
             if not st.session_state:
                 user_message(prompt)
                 ans1 = generate_response(prompt)
-                result1 = chatgpt_message(ans1, 3)
+                result1 = chatgpt_message(ans1)
                 st.session_state.user = [prompt]  # 新建用户输入问题存储列表
                 st.session_state.ans = [result1]  # 新建以往回答结果存储列表
             else:
@@ -70,7 +70,7 @@ def test_modules(module):
                 # 展示最新一次回答
                 user_message(prompt)
                 ans2 = generate_response(prompt)
-                result2 = chatgpt_message(ans2, 3)
+                result2 = chatgpt_message(ans2)
                 # 保存最新一次回答
                 st.session_state.user.append(prompt)
                 st.session_state.ans.append(result2)
@@ -82,8 +82,8 @@ def test_modules(module):
                 user_message(prompt)
                 tmp1 = generate_response(prompt)
                 tmp2 = get_keywords_and_url(prompt)
-                ans1 = [tmp1, tmp2]
-                result1 = chatgpt_message(ans1, 3)
+                ans1 = tmp1 + tmp2
+                result1 = chatgpt_message(ans1)
                 st.session_state.user = [prompt]  # 新建用户输入问题存储列表
                 st.session_state.ans = [result1]  # 新建以往回答结果存储列表
             else:
@@ -95,8 +95,8 @@ def test_modules(module):
                 user_message(prompt)
                 tmp1 = generate_response(prompt)
                 tmp2 = get_keywords_and_url(prompt)
-                ans2 = [tmp1, tmp2]
-                result2 = chatgpt_message(ans2, 3)
+                ans2 = tmp1 + tmp2
+                result2 = chatgpt_message(ans2)
                 # 保存最新一次回答
                 st.session_state.user.append(prompt)
                 st.session_state.ans.append(result2)

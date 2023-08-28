@@ -9,10 +9,15 @@ from test_of_modules import *
 
 # streamlit run streamlit_app.py
 if __name__ == '__main__':
-    st.set_page_config(page_title="🦜🔗 金山云智能小助手")
-    st.title('🦜🔗 金山云智能小助手')
-    st.divider()
-    st.subheader('请在下方对话框输入您的问题')
+    st.set_page_config(page_title="🦜🔗 金山云智能小助手", layout="wide")
+
+    col1, col2 = st.columns((5, 1))
+    col1.title("🤖 金山云智能小助手")
+    col2.image("./img/chat_1.jpg")
+    # 分割线
+    for line in split_line:
+        st.markdown(line, unsafe_allow_html=True)
+    st.info('请在下方对话框输入您的问题')
 
     # st.write(sys.path)
     os.environ['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
@@ -50,6 +55,21 @@ if __name__ == '__main__':
         with st.expander("📚 网络", False):
             for line in network:
                 st.markdown(line, unsafe_allow_html=True)
+
+        with st.expander("📚 存储与云分发", False):
+            for line in storage_cloud_distribution:
+                st.markdown(line, unsafe_allow_html=True)
+
+        with st.expander("📚 视频云服务", False):
+            for line in video_cloud_services:
+                st.markdown(line, unsafe_allow_html=True)
+
+        with st.expander("📚 云安全", False):
+            for line in cloud_security:
+                st.markdown(line, unsafe_allow_html=True)
+
+        for line in ball:
+            st.markdown(line, unsafe_allow_html=True)
 
         # 结束句
         with st.container():
