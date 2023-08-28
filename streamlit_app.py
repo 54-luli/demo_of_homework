@@ -66,12 +66,6 @@ if __name__ == '__main__':
 
     prompt = st.chat_input("请输入您想查询的问题")
 
-    # 打开页面还未提问时给出提问示例
-    if not prompt:
-        user_message("问题样例：...")
-        with st.chat_message("assistant"):
-            st.write("回答的答案样例：...")
-
     if prompt:
         # 首次回答
         if not st.session_state:
@@ -90,6 +84,7 @@ if __name__ == '__main__':
             # 保存最新一次回答
             st.session_state.user.append(prompt)
             st.session_state.ans.append(output2)
+    # 打开页面还未提问时给出提问示例
     else:
         user_message("问题样例...")
         chatgpt_message("回答的答案样例...", 3)
