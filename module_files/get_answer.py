@@ -1,6 +1,5 @@
+import json
 import requests
-
-URL = "http://qa.inner.lymboy.com?q="
 
 
 def generate_response(question, *args):
@@ -10,7 +9,7 @@ def generate_response(question, *args):
     :param args:
     :return: {"query": "", 'result': "" }
     """
-
+    URL = "http://qa.inner.lymboy.com?q="
     if not question:
         return None
     if question is list:
@@ -18,5 +17,10 @@ def generate_response(question, *args):
 
     # 发送请求
     res = requests.get(URL + question)
+    ans = json.loads(res.content.decode('unicode-escape'))
+    return ans['result']
 
-    return res.content.decode('unicode-escape')
+
+if __name__ == '__main__':
+    test = generate_response("云计算服务")
+    print(test)

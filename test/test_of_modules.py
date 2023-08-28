@@ -64,7 +64,7 @@ def test_modules(module):
                 ans1 = generate_response(prompt)
                 result1 = chatgpt_message(ans1, 3)
                 st.session_state.user = [prompt]  # 新建用户输入问题存储列表
-                st.session_state.ans = [result1.result]  # 新建以往回答结果存储列表
+                st.session_state.ans = [result1]  # 新建以往回答结果存储列表
             else:
                 # 列表展示以往回答
                 for i in range(len(st.session_state.user)):
@@ -76,4 +76,4 @@ def test_modules(module):
                 result2 = chatgpt_message(ans2, 3)
                 # 保存最新一次回答
                 st.session_state.user.append(prompt)
-                st.session_state.ans.append(result2.result)
+                st.session_state.ans.append(result2)
