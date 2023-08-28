@@ -4,10 +4,15 @@ from module_files.front_functions import *
 
 # streamlit run streamlit_app.py
 if __name__ == '__main__':
-    st.set_page_config(page_title="🦜🔗 金山云智能小助手")
-    st.title('🦜🔗 金山云智能小助手')
-    st.divider()
-    st.subheader('请在下方对话框输入您的问题')
+    st.set_page_config(page_title="🦜🔗 金山云智能小助手", layout="wide")
+
+    col1, col2 = st.columns((5, 1))
+    col1.title("🤖 金山云智能小助手")
+    col2.image("./img/chat_1.jpg")
+    # 分割线
+    for line in split_line:
+        st.markdown(line, unsafe_allow_html=True)
+    st.info('请在下方对话框输入您的问题')
 
     # 侧边栏
     with st.sidebar:
@@ -39,12 +44,34 @@ if __name__ == '__main__':
             for line in network:
                 st.markdown(line, unsafe_allow_html=True)
 
+        with st.expander("📚 存储与云分发", False):
+            for line in storage_cloud_distribution:
+                st.markdown(line, unsafe_allow_html=True)
+
+        with st.expander("📚 视频云服务", False):
+            for line in video_cloud_services:
+                st.markdown(line, unsafe_allow_html=True)
+
+        with st.expander("📚 云安全", False):
+            for line in cloud_security:
+                st.markdown(line, unsafe_allow_html=True)
+
+        for line in ball:
+            st.markdown(line, unsafe_allow_html=True)
+
         # 结束句
         with st.container():
             for line in last_sentence:
                 st.markdown(line, unsafe_allow_html=True)
 
     prompt = st.chat_input("请输入您想查询的问题")
+
+    # 打开页面还未提问时给出提问示例
+    if not prompt:
+        user_message("问题样例：...")
+        with st.chat_message("assistant"):
+            st.write("回答的答案样例：...")
+
     if prompt:
         # 首次回答
         if not st.session_state:
