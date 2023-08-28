@@ -82,8 +82,8 @@ def test_modules(module):
                 user_message(prompt)
                 tmp1 = generate_response(prompt)
                 tmp2 = get_keywords_and_url(prompt)
-                ans = tmp2.insert(0, tmp1)
-                result1 = chatgpt_message(ans, 3)
+                ans1 = [tmp1, tmp2]
+                result1 = chatgpt_message(ans1, 3)
                 st.session_state.user = [prompt]  # 新建用户输入问题存储列表
                 st.session_state.ans = [result1]  # 新建以往回答结果存储列表
             else:
@@ -95,8 +95,8 @@ def test_modules(module):
                 user_message(prompt)
                 tmp1 = generate_response(prompt)
                 tmp2 = get_keywords_and_url(prompt)
-                ans = tmp2.insert(0, tmp1)
-                result2 = chatgpt_message(ans, 3)
+                ans2 = [tmp1, tmp2]
+                result2 = chatgpt_message(ans2, 3)
                 # 保存最新一次回答
                 st.session_state.user.append(prompt)
                 st.session_state.ans.append(result2)
