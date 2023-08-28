@@ -11,11 +11,11 @@ def searchdoc(page, pagesize, keywords):
     }
     response = requests.post(url, json=data)
     # 直接返回接口查到的文本
-    return response.text
+    # return response.text
     # 直接提取返回值里的地址链接
-    # extractor = URLExtract()
-    # urls = extractor.find_urls(response.text)
-    # return urls
+    extractor = URLExtract()
+    urls = extractor.find_urls(response.text)
+    return urls
 
 
 if __name__ == '__main__':
