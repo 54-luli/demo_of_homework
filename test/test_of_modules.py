@@ -100,3 +100,7 @@ def test_modules(module):
                 # 保存最新一次回答
                 st.session_state.user.append(prompt)
                 st.session_state.ans.append(result2)
+    # 打开页面还未提问时给出提问示例
+    else:
+        user_message("问题样例...")
+        chatgpt_message("回答的答案样例...")
