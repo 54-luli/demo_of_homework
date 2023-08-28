@@ -17,10 +17,12 @@ def generate_response(question, *args):
 
     # 发送请求
     res = requests.get(URL + question)
-    ans = json.loads(res.content.decode('unicode-escape'))
-    return ans['result']
+    res = json.loads(res.content.decode('unicode-escape'), strict=False)
+    return res['result']
 
 
 if __name__ == '__main__':
     test = generate_response("云计算服务")
     print(test)
+    print('\n')
+    print(type(test))
