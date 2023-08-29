@@ -1,6 +1,7 @@
 import streamlit as st
 from module_files.keywords import *
 from module_files.searchdoc import *
+from threading import Thread
 
 
 # 用户输入问题
@@ -37,3 +38,22 @@ def get_keywords_and_url(extract_prompt):
     ans = "\n" + "、".join(output_keywords) + "\n" + "、".join(keywords_of_url)
     # temp = [output_keywords, keywords_of_url]
     return ans
+
+
+# 创建 Thread 的子类
+class MyThread(Thread):
+    def __init__(self, func, args):
+        """
+        :param func: 可调用的对象
+        :param args: 可调用对象的参数
+        """
+        Thread.__init__(self)
+        self.func = func
+        self.args = args
+        self.result = None
+
+    def run(self):
+        self.result = self.func(*self.args)
+
+    def getresult(self):
+        return self.result

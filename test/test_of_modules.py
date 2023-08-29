@@ -91,9 +91,24 @@ def test_modules(module):
         if prompt:
             # 首次回答
             if not st.session_state:
+                # user_message(prompt)
+                # tmp1 = generate_response(prompt)
+                # tmp2 = get_keywords_and_url(prompt)
+                # ans1 = tmp1 + tmp2
+                # result1 = chatgpt_message(ans1)
+                # 多线程
                 user_message(prompt)
-                tmp1 = generate_response(prompt)
-                tmp2 = get_keywords_and_url(prompt)
+                # 创建 Thread 实例
+                t1 = MyThread(generate_response, prompt)
+                t2 = MyThread(get_keywords_and_url, prompt)
+                # 启动线程运行
+                t1.start()
+                t2.start()
+                # 等待所有线程执行完毕
+                t1.join()
+                t2.join()
+                # 获取线程中程序的运行结果
+                tmp1, tmp2 = t1.getresult(), t2.getresult()
                 ans1 = tmp1 + tmp2
                 result1 = chatgpt_message(ans1)
                 st.session_state.user = [prompt]  # 新建用户输入问题存储列表
@@ -103,10 +118,28 @@ def test_modules(module):
                 for i in range(len(st.session_state.user)):
                     user_message(st.session_state.user[i])
                     old_messages(st.session_state.ans[i])
-                # 展示最新一次回答
+                # # 展示最新一次回答
+                # user_message(prompt)
+                # tmp1 = generate_response(prompt)
+                # tmp2 = get_keywords_and_url(prompt)
+                # ans2 = tmp1 + tmp2
+                # result2 = chatgpt_message(ans2)
+                # # 保存最新一次回答
+                # st.session_state.user.append(prompt)
+                # st.session_state.ans.append(result2)
+                # 多线程
                 user_message(prompt)
-                tmp1 = generate_response(prompt)
-                tmp2 = get_keywords_and_url(prompt)
+                # 创建 Thread 实例
+                t1 = MyThread(generate_response, prompt)
+                t2 = MyThread(get_keywords_and_url, prompt)
+                # 启动线程运行
+                t1.start()
+                t2.start()
+                # 等待所有线程执行完毕
+                t1.join()
+                t2.join()
+                # 获取线程中程序的运行结果
+                tmp1, tmp2 = t1.getresult(), t2.getresult()
                 ans2 = tmp1 + tmp2
                 result2 = chatgpt_message(ans2)
                 # 保存最新一次回答
