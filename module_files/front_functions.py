@@ -27,7 +27,7 @@ def chatgpt_message(answer):
 # 关键词提取与文档链接整合
 def get_result(extract_prompt):
     output_keywords = extract_keywords(extract_prompt)
-    keywords_of_url = searchdoc(1, 2, output_keywords)
+    keywords_of_url = searchdoc(1, 1, output_keywords)
     temp = [output_keywords, keywords_of_url]
     result = chatgpt_message(temp)
     return result
@@ -35,8 +35,8 @@ def get_result(extract_prompt):
 
 def get_keywords_and_url(extract_prompt):
     output_keywords = extract_keywords(extract_prompt)
-    keywords_of_url = searchdoc(1, 2, output_keywords)
-    ans = "\n" + "、".join(output_keywords) + "\n" + "、".join(keywords_of_url)
+    keywords_of_url = searchdoc(1, 1, output_keywords)
+    ans = "\n" + keywords_of_url
     # temp = [output_keywords, keywords_of_url]
     return ans
 
