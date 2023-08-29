@@ -34,6 +34,6 @@ def get_result(extract_prompt):
 def get_keywords_and_url(extract_prompt):
     output_keywords = extract_keywords(extract_prompt)
     keywords_of_url = searchdoc(1, 2, output_keywords)
-    ans = "\n"+"、".join(output_keywords)+"\n"+"、".join(keywords_of_url)
+    ans = "\n" + "、".join(output_keywords) + "\n" + "、".join(keywords_of_url)
     # temp = [output_keywords, keywords_of_url]
     return ans
