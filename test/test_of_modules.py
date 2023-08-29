@@ -34,8 +34,8 @@ def test_modules(module):
                 st.session_state.ans.append(result2)
         # 打开页面还未提问时给出提问示例
         else:
-            user_message("问题样例...")
-            chatgpt_message("回答的答案样例...")
+            user_message("K宝你能做些什么")
+            chatgpt_message("我可以结合官方文档为你解答有关金山云计算服务方面的问题")
     elif module == '关键词相关文档链接获取模块':
         # 用户输入问题的关键词提取函数测试
         if prompt:
@@ -58,8 +58,8 @@ def test_modules(module):
                 st.session_state.ans.append(result2)
         # 打开页面还未提问时给出提问示例
         else:
-            user_message("问题样例...")
-            chatgpt_message("回答的答案样例...")
+            user_message("K宝你能做些什么")
+            chatgpt_message("我可以结合官方文档为你解答有关金山云计算服务方面的问题")
     elif module == '生成结果模块':
         # 用户输入问题的关键词提取函数测试
         if prompt:
@@ -84,8 +84,8 @@ def test_modules(module):
                 st.session_state.ans.append(result2)
         # 打开页面还未提问时给出提问示例
         else:
-            user_message("问题样例...")
-            chatgpt_message("回答的答案样例...")
+            user_message("K宝你能做些什么")
+            chatgpt_message("我可以结合官方文档为你解答有关金山云计算服务方面的问题")
     elif module == '最终成品展示页面':
         # 用户输入问题的关键词提取函数测试
         if prompt:
@@ -149,5 +149,5 @@ def test_modules(module):
                 st.session_state.ans.append(result)
         # 打开页面还未提问时给出提问示例
         else:
-            user_message("问题样例...")
-            chatgpt_message("回答的答案样例...")
+            user_message("K宝你能做些什么")
+            chatgpt_message("我可以结合官方文档为你解答有关金山云计算服务方面的问题")
