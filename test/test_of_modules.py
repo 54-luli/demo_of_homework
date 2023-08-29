@@ -99,8 +99,8 @@ def test_modules(module):
                 # 多线程
                 user_message(prompt)
                 # 创建 Thread 实例
-                t1 = MyThread(generate_response, prompt)
-                t2 = MyThread(get_keywords_and_url, prompt)
+                t1 = MyThread(generate_response, args=(prompt,))
+                t2 = MyThread(get_keywords_and_url, args=(prompt,))
                 # 启动线程运行
                 t1.start()
                 t2.start()
@@ -130,8 +130,8 @@ def test_modules(module):
                 # 多线程
                 user_message(prompt)
                 # 创建 Thread 实例
-                t1 = MyThread(generate_response, prompt)
-                t2 = MyThread(get_keywords_and_url, prompt)
+                t1 = MyThread(generate_response, args=(prompt,))
+                t2 = MyThread(get_keywords_and_url, args=(prompt,))
                 # 启动线程运行
                 t1.start()
                 t2.start()
