@@ -98,21 +98,22 @@ def test_modules(module):
                 # result1 = chatgpt_message(ans1)
                 # 多线程
                 user_message(prompt)
-                # 创建 Thread 实例
-                t1 = MyThread(generate_response, args=(prompt,))
-                t2 = MyThread(get_keywords_and_url, args=(prompt,))
-                # 启动线程运行
-                t1.start()
-                t2.start()
-                # 等待所有线程执行完毕
-                t1.join()
-                t2.join()
-                # 获取线程中程序的运行结果
-                tmp1, tmp2 = t1.getresult(), t2.getresult()
-                ans1 = tmp1 + tmp2
-                result1 = chatgpt_message(ans1)
+                # # 创建 Thread 实例
+                # t1 = MyThread(generate_response, args=(prompt,))
+                # t2 = MyThread(get_keywords_and_url, args=(prompt,))
+                # # 启动线程运行
+                # t1.start()
+                # t2.start()
+                # # 等待所有线程执行完毕
+                # t1.join()
+                # t2.join()
+                # # 获取线程中程序的运行结果
+                # tmp1, tmp2 = t1.getresult(), t2.getresult()
+                # ans1 = tmp1 + tmp2
+                # result1 = chatgpt_message(ans1)
+                result = chatgpt_message(use_multi_threads(prompt))
                 st.session_state.user = [prompt]  # 新建用户输入问题存储列表
-                st.session_state.ans = [result1]  # 新建以往回答结果存储列表
+                st.session_state.ans = [result]  # 新建以往回答结果存储列表
             else:
                 # 列表展示以往回答
                 for i in range(len(st.session_state.user)):
@@ -129,22 +130,23 @@ def test_modules(module):
                 # st.session_state.ans.append(result2)
                 # 多线程
                 user_message(prompt)
-                # 创建 Thread 实例
-                t1 = MyThread(generate_response, args=(prompt,))
-                t2 = MyThread(get_keywords_and_url, args=(prompt,))
-                # 启动线程运行
-                t1.start()
-                t2.start()
-                # 等待所有线程执行完毕
-                t1.join()
-                t2.join()
-                # 获取线程中程序的运行结果
-                tmp1, tmp2 = t1.getresult(), t2.getresult()
-                ans2 = tmp1 + tmp2
-                result2 = chatgpt_message(ans2)
+                # # 创建 Thread 实例
+                # t1 = MyThread(generate_response, args=(prompt,))
+                # t2 = MyThread(get_keywords_and_url, args=(prompt,))
+                # # 启动线程运行
+                # t1.start()
+                # t2.start()
+                # # 等待所有线程执行完毕
+                # t1.join()
+                # t2.join()
+                # # 获取线程中程序的运行结果
+                # tmp1, tmp2 = t1.getresult(), t2.getresult()
+                # ans2 = tmp1 + tmp2
+                # result2 = chatgpt_message(ans2)
+                result = chatgpt_message(use_multi_threads(prompt))
                 # 保存最新一次回答
                 st.session_state.user.append(prompt)
-                st.session_state.ans.append(result2)
+                st.session_state.ans.append(result)
         # 打开页面还未提问时给出提问示例
         else:
             user_message("问题样例...")

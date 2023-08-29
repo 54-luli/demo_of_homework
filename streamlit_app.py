@@ -1,3 +1,5 @@
+import os
+import openai
 import streamlit as st
 from module_files.front_text import *
 from module_files.front_functions import *
@@ -14,6 +16,10 @@ if __name__ == '__main__':
         st.markdown(line, unsafe_allow_html=True)
     st.info('请在下方对话框输入您的问题')
 
+    # 加载密钥
+    os.environ['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
+    openai.api_key = os.getenv("OPENAI_API_KEY")
+
     # 侧边栏
     with st.sidebar:
         # 创建两列布局
@@ -23,7 +29,6 @@ if __name__ == '__main__':
         # 在第二列中显示标题
         col2.markdown(f"<h1 style='font-size:40px;transform:translateY(20px);'>{jinshanyun}</h1>",
                       unsafe_allow_html=True)
-
         # 欢迎语句
         with st.container():
             st.markdown(first_sentence)
@@ -65,13 +70,15 @@ if __name__ == '__main__':
                 st.markdown(line, unsafe_allow_html=True)
 
     prompt = st.chat_input("请输入您想查询的问题")
+    # 用户输入问题的关键词提取函数测试
     if prompt:
         # 首次回答
         if not st.session_state:
+            # 多线程
             user_message(prompt)
-            output1 = chatgpt_message(prompt)
+            result = chatgpt_message(use_multi_threads(prompt))
             st.session_state.user = [prompt]  # 新建用户输入问题存储列表
-            st.session_state.ans = [output1]  # 新建以往回答结果存储列表
+            st.session_state.ans = [result]  # 新建以往回答结果存储列表
         else:
             # 列表展示以往回答
             for i in range(len(st.session_state.user)):
@@ -79,10 +86,10 @@ if __name__ == '__main__':
                 old_messages(st.session_state.ans[i])
             # 展示最新一次回答
             user_message(prompt)
-            output2 = chatgpt_message(prompt)
+            result = chatgpt_message(use_multi_threads(prompt))
             # 保存最新一次回答
             st.session_state.user.append(prompt)
-            st.session_state.ans.append(output2)
+            st.session_state.ans.append(result)
     # 打开页面还未提问时给出提问示例
     else:
         user_message("问题样例...")

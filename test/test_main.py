@@ -19,6 +19,7 @@ if __name__ == '__main__':
         st.markdown(line, unsafe_allow_html=True)
     st.info('请在下方对话框输入您的问题')
 
+    # 加载密钥
     # st.write(sys.path)
     os.environ['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
     openai.api_key = os.getenv("OPENAI_API_KEY")
